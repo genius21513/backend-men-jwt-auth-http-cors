@@ -14,11 +14,26 @@ var corsOptions = {
   // },
 
   origin: [
+    // "http://localhost",
     "http://localhost:3000",
     // "http://localhost:4000",
-    // "http://10.10.13.227",
+    "http://10.10.13.227",
   ]
 };
+
+app.use(function(req, res, next) {  
+  var origin = req.get('origin');    
+  var host = req.get('host');
+  const ipS = req.socket.remoteAddress;
+  const ipH = req.header('x-forwarded-for');
+
+  console.log('Origin: ', origin);
+  console.log('Host: ', host);
+  console.log('IpS: ', ipS);
+  console.log('IpH: ', ipH);
+  next();
+});  
+
 
 app.use(cors(corsOptions));
 
