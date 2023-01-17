@@ -7,8 +7,17 @@ module.exports = function(app) {
       "Access-Control-Allow-Headers",
       "Origin, Content-Type, Accept"
     );
+    var origin = req.get('origin');    
+    var host = req.get('host');
+    console.log('Origin: ', origin);
+    console.log('Host: ', host);
     next();
-  });
+  });  
+
+  // app.use("/api", (req, res, next) => { 
+  //   console.log("Hi, via /api");
+  //   next();
+  // });
 
   app.get("/api/test/all", controller.allAccess);
 

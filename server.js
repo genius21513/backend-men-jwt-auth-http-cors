@@ -7,7 +7,17 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  // origin: "*",
+  // origin : (origin, callback) => {
+  //   console.log(origin);
+  //   callback(null, true);
+  // },
+
+  origin: [
+    "http://localhost:3000",
+    // "http://localhost:4000",
+    // "http://10.10.13.227",
+  ]
 };
 
 app.use(cors(corsOptions));
@@ -18,13 +28,13 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  cookieSession({
-    name: "bezkoder-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
-    httpOnly: true
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: "bezkoder-session",
+//     secret: "COOKIE_SECRET", // should use as secret environment variable
+//     httpOnly: true
+//   })
+// );
 
 const db = require("./app/models");
 const Role = db.role;
