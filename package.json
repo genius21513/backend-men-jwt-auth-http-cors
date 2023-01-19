@@ -4,7 +4,8 @@
   "description": "Node.js + MongoDB: JWT Authentication & Authorization",
   "main": "server.js",
   "scripts": {
-    "start": "npx nodemon start",
+    "start": "node server.js",
+    "dev": "npx nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
