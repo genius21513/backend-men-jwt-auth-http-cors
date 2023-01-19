@@ -9,28 +9,36 @@ const app = express();
 var corsOptions = {
   // origin: "*",
   // origin : (origin, callback) => {
-  //   console.log(origin);
-  //   callback(null, true);
+  //   new Error("Error");
+  //   next();
   // },
 
   origin: [
+    // "http://localhost:4000",
+
     // "http://localhost",
     "http://localhost:3000",
-    // "http://localhost:4000",
-    "http://10.10.13.227",
+    
+    // "http://10.10.13.227",
+    // "http://10.10.13.227:3000",
+
+    // "http://127.0.0.1",
+    "http://127.0.0.1:3000"
   ]
 };
 
-app.use(function(req, res, next) {  
-  var origin = req.get('origin');    
+app.use(function(req, res, next) {
+  var origin = req.get('origin');
   var host = req.get('host');
   const ipS = req.socket.remoteAddress;
-  const ipH = req.header('x-forwarded-for');
+  // const ipH = req.header('x-forwarded-for');
 
+  console.log('---------------Log time: ', new Date());
   console.log('Origin: ', origin);
   console.log('Host: ', host);
   console.log('IpS: ', ipS);
-  console.log('IpH: ', ipH);
+  // console.log('IpH: ', ipH);
+  console.log('---------------End')
   next();
 });  
 

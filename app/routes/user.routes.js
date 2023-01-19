@@ -8,12 +8,7 @@ module.exports = function(app) {
       "Origin, Content-Type, Accept"
     );
     next();
-  });  
-
-  // app.use("/api", (req, res, next) => { 
-  //   console.log("Hi, via /api");
-  //   next();
-  // });
+  });
 
   app.get("/api/test/all", controller.allAccess);
 
