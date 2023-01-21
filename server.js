@@ -8,22 +8,18 @@ const app = express();
 
 var corsOptions = {
   // origin: "*",
-  // origin : (origin, callback) => {
-  //   new Error("Error");
-  //   next();
-  // },
 
   origin: [
     // "http://localhost:4000",
 
     // "http://localhost",
-    "http://localhost:3000",
+    // "http://localhost:3000",
     
-    // "http://10.10.13.227",
-    "http://10.10.13.227:3000",
+    // // "http://10.10.13.227",
+    // "http://10.10.13.227:3000",
 
-    // "http://127.0.0.1",
-    "http://127.0.0.1:3000"
+    // // "http://127.0.0.1",
+    // "http://127.0.0.1:3000"
   ]
 };
 
@@ -63,11 +59,18 @@ app.use(
 const db = require("./app/models");
 const Role = db.role;
 
+/** LocalHost */
+// db.mongoose
+//   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+  
+/** Remote Host */
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+.connect(`${dbConfig.Connstring}`, {
+  useNewUrlParser: true
+})
   .then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
