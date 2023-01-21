@@ -26,23 +26,6 @@ var corsOptions = {
   ],  
 };
 
-app.use(function(req, res, next) {
-  // res.set('Access-Control-Allow-Methods: *');
-  
-  var origin = req.get('origin'); // = req.headers.origin
-  var host = req.get('host');
-  const ipS = req.socket.remoteAddress;
-  // const ipH = req.header('x-forwarded-for');
-  console.log('---------------Log time: ', new Date());
-  console.log('Origin: ', origin);
-  console.log('Host: ', host);
-  console.log('IpS: ', ipS);
-  // console.log('IpH: ', ipH);
-  console.log('---------------End')
-  next();
-});  
-
-
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
@@ -61,6 +44,35 @@ app.use(
     // sameSite: "none",
   })  
 );
+
+// This is test for the first.
+app.use(function(req, res, next) {
+  // This is default cookie func
+  res.cookie("res.cookie", "res.cookie()");
+  // This is test cookieSession token
+  req.session.session_cookie = "session_cookie";
+
+  // General headers
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept"
+    // "Origin, Content-Type, Accept, Access-Control-Allow-Origin, Set-Cookie, Authorization"
+  );
+
+  var origin = req.get('origin'); // = req.headers.origin
+  var host = req.get('host');
+  const ipS = req.socket.remoteAddress;
+  // const ipH = req.header('x-forwarded-for');
+  console.log('---------------Log time: ', new Date());
+  console.log('Origin: ', origin);
+  console.log('Host: ', host);
+  console.log('IpS: ', ipS);
+  // console.log('IpH: ', ipH);
+  console.log('---------------End');
+  
+  next();
+});  
+
 
 const db = require("./app/models");
 const Role = db.role;
