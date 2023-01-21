@@ -7,7 +7,7 @@ module.exports = function(app) {
       "Access-Control-Allow-Headers",
       "Origin, Content-Type, Accept"
     );
-    res.cookie("test-cookie", "this is test-cookie : user routes");
+    res.cookie("test-cookie-from-user", "****");
     next();
   });
 
