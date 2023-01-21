@@ -3,10 +3,12 @@ const controller = require("../controllers/user.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
+    // Access-Control-Allow-Methods: *
     res.header(
       "Access-Control-Allow-Headers",
-      "Origin, Content-Type, Accept, Access-Control-Allow-Origin, Set-Cookie, Authorization"
-    );
+      "Origin, Content-Type, Accept"
+      // "Origin, Content-Type, Accept, Access-Control-Allow-Origin, Set-Cookie, Authorization"
+    );    
     res.cookie("test-cookie-from-user", "****");
     next();
   });

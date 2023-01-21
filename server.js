@@ -23,11 +23,13 @@ var corsOptions = {
 
     // // "http://127.0.0.1",
     // "http://127.0.0.1:3000"
-  ]
+  ],  
 };
 
 app.use(function(req, res, next) {
-  var origin = req.get('origin');
+  // res.set('Access-Control-Allow-Methods: *');
+  
+  var origin = req.get('origin'); // = req.headers.origin
   var host = req.get('host');
   const ipS = req.socket.remoteAddress;
   // const ipH = req.header('x-forwarded-for');
@@ -54,7 +56,8 @@ app.use(
     name: "bezkoder-session",
     secret: "COOKIE_SECRET", // should use as secret environment variable    
     httpOnly: true,
-    path: "/"
+    path: "/",
+    sameSite: "none",
   })
 );
 
