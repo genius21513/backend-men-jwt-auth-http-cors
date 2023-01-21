@@ -38,8 +38,8 @@ app.use(
   cookieSession({
     name: "bezkoder-session",
     secret: "COOKIE_SECRET", // should use as secret environment variable    
-    // httpOnly: true,
-    httpOnly: false,
+    httpOnly: true,
+    // httpOnly: false,
     path: "/",
     // sameSite: "none",
   })  
