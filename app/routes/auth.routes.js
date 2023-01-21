@@ -8,7 +8,7 @@ module.exports = function(app) {
       "Origin, Content-Type, Accept"
       // "Origin, Content-Type, Accept, Access-Control-Allow-Origin, Set-Cookie, Authorization"
     );
-    res.cookie("test-cookie-from-auth", "****");
+    res.cookie("test-cookie-from-auth", "This is set by default cookie func.");
     next();
   });
 

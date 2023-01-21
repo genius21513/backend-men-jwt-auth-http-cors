@@ -55,9 +55,9 @@ app.use(
   cookieSession({
     name: "bezkoder-session",
     secret: "COOKIE_SECRET", // should use as secret environment variable    
-    httpOnly: false,
+    httpOnly: true,
     path: "/",
-    sameSite: "none",
+    // sameSite: "none",
   })
 );
 
@@ -89,7 +89,7 @@ db.mongoose
 // simple route
 app.get("/", (req, res) => {
   // This is test cookieSession token
-  req.session.test_token = "test_token";
+  req.session.test_token = "test_token (httpOnly cookieSession)";
 
   res.json({ message: "Welcome to bezkoder application." });
 });
