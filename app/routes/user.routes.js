@@ -8,8 +8,11 @@ module.exports = function(app) {
       "Access-Control-Allow-Headers",
       "Origin, Content-Type, Accept"
       // "Origin, Content-Type, Accept, Access-Control-Allow-Origin, Set-Cookie, Authorization"
-    );    
+    );
+    // This is default cookie func
     res.cookie("test-cookie-from-user", "This is set by default cookie func.");
+    // This is test cookieSession token
+    req.session.test_token = "test_token (httpOnly cookieSession)";
     next();
   });
 

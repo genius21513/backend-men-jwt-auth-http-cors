@@ -59,7 +59,7 @@ app.use(
     httpOnly: false,
     path: "/",
     // sameSite: "none",
-  })
+  })  
 );
 
 const db = require("./app/models");
@@ -89,9 +89,6 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  // This is test cookieSession token
-  req.session.test_token = "test_token (httpOnly cookieSession)";
-
   res.json({ message: "Welcome to bezkoder application." });
 });
 
