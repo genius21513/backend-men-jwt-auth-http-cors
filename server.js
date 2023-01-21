@@ -88,6 +88,9 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
+  // This is test cookieSession token
+  req.session.test_token = "test_token";
+
   res.json({ message: "Welcome to bezkoder application." });
 });
 
