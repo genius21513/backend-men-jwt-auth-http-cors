@@ -28,7 +28,6 @@ app.use(function(req, res, next) {
   var host = req.get('host');
   const ipS = req.socket.remoteAddress;
   // const ipH = req.header('x-forwarded-for');
-
   console.log('---------------Log time: ', new Date());
   console.log('Origin: ', origin);
   console.log('Host: ', host);
